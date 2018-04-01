@@ -7,6 +7,7 @@ import store from './store';
 import { BrowserRouter } from 'react-router-dom';
 import S from 'string';
 S.extendPrototype();
+import './i18n';
 render(
   <Provider store={store}>
     <BrowserRouter>
