@@ -11,6 +11,10 @@ class App extends Component {
   componentWillMount() {
     this.props.fetchRedis();
   }
+  changeLang = lng => {
+    const { i18n } = this.props;
+    i18n.changeLanguage(lng);
+  };
 
   render() {
     return (
@@ -27,6 +31,27 @@ class App extends Component {
             </NavLink>
           </li>
         </ul>
+        <hr />
+        <div className="btn-group">
+          <button
+            onClick={() => {
+              this.changeLang('en');
+            }}
+            className="btn btn-dark"
+          >
+            EN
+          </button>
+          <button
+            onClick={() => {
+              this.changeLang('sp');
+            }}
+            className="btn btn-danger"
+          >
+            SP
+          </button>
+        </div>
+        <hr />
+
         <Switch>
           <Route path="/" exact component={Home} />
           <Route
@@ -40,4 +65,4 @@ class App extends Component {
 const AppConnect = connect(state => state, actions)(App);
 const AppTranslate = translate('translations')(AppConnect);
 const AppWithRouter = withRouter(AppTranslate);
-export default AppTranslate;
+export default AppWithRouter;
