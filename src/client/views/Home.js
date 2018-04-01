@@ -6,7 +6,7 @@ import { translate } from 'react-i18next';
 const Home = ({ redis, t }) => {
   return (
     <div>
-      <h1>Welcome to RPER</h1>
+      <h1>{t('welcome')} RPER</h1>
       <p className="text-muted">ReactJS/ ParcalJS/ ExpressJS / Redis</p>
       <h3 className="redis-text">{t('message')}:</h3>
       <p>

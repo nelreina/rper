@@ -3,7 +3,7 @@ import { assign } from 'lodash';
 import * as actions from './store/reducers/redis';
 import { connect } from 'react-redux';
 import { Switch, Route, withRouter, NavLink } from 'react-router-dom';
-import { translate, Trans } from 'react-i18next';
+import { translate } from 'react-i18next';
 
 import Home from './views/Home';
 
