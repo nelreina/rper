@@ -27,6 +27,21 @@ client.on('connect', () => {
   initImport(client, logger);
 });
 
+app.get('/locales/:key', async (req, res) => {
+  try {
+    const { key } = req.params;
+    logger.debug('Getting locales: ', key);
+    const data = await client.get(`locale-${key}`);
+    if (data) {
+      res.json(JSON.parse(data));
+    } else {
+      res.status(404).json({ message: `No data found!` });
+    }
+  } catch (error) {
+    logger.error(error);
+    res.send('Error occured on the server!');
+  }
+});
 app.get('/api/:key', async (req, res) => {
   try {
     const { key } = req.params;

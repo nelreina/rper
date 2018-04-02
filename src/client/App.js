@@ -17,17 +17,18 @@ class App extends Component {
   };
 
   render() {
+    const { t } = this.props;
     return (
       <div className="container">
         <ul className="nav justify-content-center">
           <li className="nav-item">
             <NavLink className="nav-link" to="/">
-              Home
+              {t('Home')}
             </NavLink>
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" to="/invalid">
-              Invalid Route
+              {t('Invalid Route')}
             </NavLink>
           </li>
         </ul>
@@ -49,13 +50,33 @@ class App extends Component {
           >
             SP
           </button>
+          <button
+            onClick={() => {
+              this.changeLang('pm');
+            }}
+            className="btn btn-primary"
+          >
+            PM
+          </button>
+          <button
+            onClick={() => {
+              this.changeLang('nl');
+            }}
+            className="btn btn-warning"
+          >
+            NL
+          </button>
         </div>
         <hr />
 
         <Switch>
           <Route path="/" exact component={Home} />
           <Route
-            render={props => <h3>Path {props.location.pathname} not found</h3>}
+            render={props => (
+              <h3>
+                {t('URL Path')} {props.location.pathname}: {t('page not found')}
+              </h3>
+            )}
           />
         </Switch>
       </div>
