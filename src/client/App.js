@@ -2,71 +2,23 @@ import React, { Component } from 'react';
 import { assign } from 'lodash';
 import * as actions from './store/reducers/redis';
 import { connect } from 'react-redux';
-import { Switch, Route, withRouter, NavLink } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import { translate } from 'react-i18next';
 
 import Home from './views/Home';
-
+import Navigation from './components/Navigation';
+import Languages from './components/Languages';
 class App extends Component {
   componentWillMount() {
     this.props.fetchRedis();
   }
-  changeLang = lng => {
-    const { i18n } = this.props;
-    i18n.changeLanguage(lng);
-  };
-
   render() {
     const { t } = this.props;
     return (
       <div className="container">
-        <ul className="nav justify-content-center">
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/">
-              {t('Home')}
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/invalid">
-              {t('Invalid Route')}
-            </NavLink>
-          </li>
-        </ul>
+        <Languages langs={['pm', 'en', 'nl', 'sp']} />
         <hr />
-        <div className="btn-group">
-          <button
-            onClick={() => {
-              this.changeLang('en');
-            }}
-            className="btn btn-dark"
-          >
-            EN
-          </button>
-          <button
-            onClick={() => {
-              this.changeLang('sp');
-            }}
-            className="btn btn-danger"
-          >
-            SP
-          </button>
-          <button
-            onClick={() => {
-              this.changeLang('pm');
-            }}
-            className="btn btn-primary"
-          >
-            PM
-          </button>
-          <button
-            onClick={() => {
-              this.changeLang('nl');
-            }}
-            className="btn btn-warning"
-          >
-            NL
-          </button>
-        </div>
+        <Navigation />
         <hr />
 
         <Switch>
