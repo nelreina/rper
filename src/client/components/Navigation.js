@@ -12,6 +12,11 @@ const Navigation = ({ t }) => {
           </NavLink>
         </li>
         <li className="nav-item">
+          <NavLink className="nav-link" to="/protected">
+            {t('Protected')}
+          </NavLink>
+        </li>
+        <li className="nav-item">
           <NavLink className="nav-link" to="/invalid">
             {t('Invalid Route')}
           </NavLink>
