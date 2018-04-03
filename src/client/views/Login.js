@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { authActions as actions } from 'nelreina-web-utils';
 
-import * as actions from '../store/reducers/auth';
+// import * as actions from '../store/reducers/auth';
 
 class Login extends Component {
   render() {
