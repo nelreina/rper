@@ -6,8 +6,13 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import { translate } from 'react-i18next';
 
 import Home from './views/Home';
+import Login from './views/Login';
+import Protected from './views/Protected';
+import NotFound from './views/NotFound';
 import Navigation from './components/Navigation';
 import Languages from './components/Languages';
+import PrivateRoute from './PrivateRoute';
+
 class App extends Component {
   componentWillMount() {
     this.props.fetchRedis();
@@ -23,13 +28,9 @@ class App extends Component {
 
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route
-            render={props => (
-              <h3>
-                {t('URL Path')} {props.location.pathname}: {t('page not found')}
-              </h3>
-            )}
-          />
+          <Route path="/login" exact component={Login} />
+          <PrivateRoute path="/protected" component={Protected} />
+          <PrivateRoute component={NotFound} />
         </Switch>
       </div>
     );
