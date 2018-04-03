@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Highlight from 'react-highlight';
 import { translate } from 'react-i18next';
 
-const Home = ({ redis, t }) => {
+const Home = ({ redis, t, auth }) => {
   return (
     <div>
       <h1>{t('welcome')} RPER</h1>
@@ -13,6 +13,14 @@ const Home = ({ redis, t }) => {
         <small className="text-muted">{t('delay')}</small>
       </p>
       <Highlight className="java">{JSON.stringify(redis, null, 2)}</Highlight>
+
+      {auth.isAuthenticated ? (
+        <p className="log">
+          {t('Logged in as')} {auth.user.username}
+        </p>
+      ) : (
+        t('Please login to see protected content')
+      )}
     </div>
   );
 };

@@ -12,7 +12,10 @@ const sp = {
   'page not found': 'página no encontrada',
   'URL Path': 'Ruta de Url',
   LOGIN: 'INICIAR SESIÓN',
-  Protected: 'Protegido'
+  Protected: 'Protegido',
+  'Please login to see protected content':
+    'Inicia sesión para ver el contenido protegido',
+  'Logged in as': 'Conectado como'
 };
 const pm = {
   welcome: 'Bon bini na ',
@@ -23,7 +26,9 @@ const pm = {
   'page not found': 'E pagina aki no ta existi',
   'URL Path': 'Pagina',
   LOGIN: 'LÒG EN',
-  Protected: 'Proteha'
+  Protected: 'Proteha',
+  'Please login to see protected content': 'Log en pa mira e kontenido protehá',
+  'Logged in as': 'Konosí pa'
 };
 const nl = {
   welcome: 'Welkom op ',
@@ -34,7 +39,10 @@ const nl = {
   'page not found': 'pagina niet gevonden',
   'URL Path': 'URL-pad',
   LOGIN: 'LOG IN',
-  Protected: 'Beveiligd'
+  Protected: 'Beveiligd',
+  'Please login to see protected content':
+    'Meld u aan om beveiligde inhoud te bekijken',
+  'Logged in as': 'Aangemeld als'
 };
 
 module.exports = async (client, logger) => {
