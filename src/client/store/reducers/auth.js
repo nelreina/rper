@@ -1,37 +1,53 @@
 import { api } from 'nelreina-web-utils';
 import { assign } from 'lodash';
 
-const FETCHING = 'FETCHING_AUTH';
-const FETCH_SUCCESS = 'FETCH_AUTH_SUCCESS';
-const FETCH_ERROR = 'FETCH_AUTH_ERROR';
+const LOGININ = 'LOGININ';
+const LOGOUT = 'LOGOUT';
+const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+const LOGIN_ERROR = 'LOGIN_ERROR';
 
-const { get } = api;
+const { post } = api;
 const initialState = {
   isAuthenticated: false
 };
 
-export const fetchAuth = () => async dispatch => {
-  dispatch({ type: FETCHING });
-  const payload = await get(`/api/auth`);
+export const login = () => async dispatch => {
+  dispatch({ type: LOGININ });
+  const payload = await post(`/api/login`, {});
   dispatch({
-    type: FETCH_SUCCESS,
+    type: LOGIN_SUCCESS,
     payload
   });
 };
+export const logout = param => ({
+  type: LOGOUT
+});
+
+export const actionName = param => ({
+  type: type,
+  payload: payload
+});
 
 export default (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case FETCH_SUCCESS:
+    case LOGIN_SUCCESS:
       return assign({}, state, {
         error: false,
-        fetching: false,
-        data: payload
+        inprogress: false,
+        isAuthenticated: payload.isAuthenticated,
+        user: payload.user
       });
-    case FETCHING:
-      return assign({}, state, { error: false, fetching: true, data: [] });
-    case FETCH_ERROR:
-      return assign({}, state, { error: true, message: payload, data: [] });
+    case LOGININ:
+      return assign({}, state, { error: false, inprogress: true, user: {} });
+    case LOGOUT:
+    case LOGIN_ERROR:
+      return assign({}, state, {
+        error: true,
+        message: payload,
+        isAuthenticated: false,
+        user: {}
+      });
 
     default:
       return state;

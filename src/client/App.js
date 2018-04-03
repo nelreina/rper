@@ -18,17 +18,15 @@ class App extends Component {
     this.props.fetchRedis();
   }
   render() {
-    const { t } = this.props;
+    const { t, auth } = this.props;
     return (
       <div className="container">
         <Languages langs={['pm', 'en', 'nl', 'sp']} />
-        <hr />
         <Navigation />
-        <hr />
 
         <Switch>
-          <Route path="/" exact component={Home} />
           <Route path="/login" exact component={Login} />
+          <Route path="/" exact component={Home} />
           <PrivateRoute path="/protected" component={Protected} />
           <PrivateRoute component={NotFound} />
         </Switch>

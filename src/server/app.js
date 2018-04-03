@@ -58,6 +58,15 @@ app.get('/api/:key', async (req, res) => {
     res.send('Error occured on the server!');
   }
 });
+app.post('/api/login', async (req, res) => {
+  try {
+    const data = { isAuthenticated: true, user: { username: 'nelreina' } };
+    res.send(data);
+  } catch (error) {
+    logger.error(error);
+    res.status(503).send(error);
+  }
+});
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(publicPath, 'index.html'));
 });

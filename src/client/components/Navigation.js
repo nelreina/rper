@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 const Navigation = ({ t }) => {
   return (
     <div>
+      <hr />
       <ul className="nav justify-content-center">
         <li className="nav-item">
           <NavLink className="nav-link" to="/">
@@ -22,6 +23,7 @@ const Navigation = ({ t }) => {
           </NavLink>
         </li>
       </ul>
+      <hr />
     </div>
   );
 };

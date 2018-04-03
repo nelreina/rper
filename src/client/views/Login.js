@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
 import { translate } from 'react-i18next';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+
+import * as actions from '../store/reducers/auth';
 
 class Login extends Component {
   render() {
-    const { t } = this.props;
-    return <div>{t('LOGIN')}</div>;
+    const { login, t, auth } = this.props;
+    return auth.isAuthenticated ? (
+      <Redirect to="/" />
+    ) : (
+      <button className="btn btn-primary" onClick={login}>
+        {t('LOGIN')}
+      </button>
+    );
   }
 }
-export default translate()(Login);
+const TranslateLogin = translate()(Login);
+const ConnectLogin = connect(state => ({ auth: state.auth }), actions)(
+  TranslateLogin
+);
+
+export default ConnectLogin;
