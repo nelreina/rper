@@ -10,7 +10,9 @@ const sp = {
   Home: 'Página principal',
   'Invalid Route': 'Ruta inválida',
   'page not found': 'página no encontrada',
-  'URL Path': 'Ruta de Url'
+  'URL Path': 'Ruta de Url',
+  LOGIN: 'INICIAR SESIÓN',
+  Protected: 'Protegido'
 };
 const pm = {
   welcome: 'Bon bini na ',
@@ -19,7 +21,9 @@ const pm = {
   Home: 'Kas',
   'Invalid Route': 'No ta existi',
   'page not found': 'E pagina aki no ta existi',
-  'URL Path': 'Pagina'
+  'URL Path': 'Pagina',
+  LOGIN: 'LÒG EN',
+  Protected: 'Proteha'
 };
 const nl = {
   welcome: 'Welkom op ',
@@ -28,7 +32,9 @@ const nl = {
   Home: 'Startpagina',
   'Invalid Route': 'Ongeldige Route',
   'page not found': 'pagina niet gevonden',
-  'URL Path': 'URL-pad'
+  'URL Path': 'URL-pad',
+  LOGIN: 'LOG IN',
+  Protected: 'Beveiligd'
 };
 
 module.exports = async (client, logger) => {
