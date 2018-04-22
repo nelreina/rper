@@ -1,4 +1,3 @@
-import { api } from 'nelreina-web-utils';
 import { assign } from 'lodash';
 
 const FETCHING = 'FETCHING_REDIS';
@@ -7,9 +6,9 @@ const FETCH_ERROR = 'FETCH_REDIS_ERROR';
 
 const initialState = {};
 
-export const fetchRedis = () => async dispatch => {
+export const fetchRedis = () => async (dispatch, getState, api) => {
   dispatch({ type: FETCHING });
-  const payload = await api.get(`/api/redis`);
+  const payload = await api.get(`/redis`);
   dispatch({
     type: FETCH_SUCCESS,
     payload
