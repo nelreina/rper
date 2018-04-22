@@ -1,3 +1,3 @@
 # Welcome to RPER
 
-ReactJS/ ParcalJS/ ExpressJS / Redis
+ReactJS/ Parcel Bundler/ ExpressJS / Redis
