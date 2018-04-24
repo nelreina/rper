@@ -8,11 +8,15 @@ const initialState = {};
 
 export const fetchRedis = () => async (dispatch, getState, api) => {
   dispatch({ type: FETCHING });
-  const payload = await api.get(`/redis`);
-  dispatch({
-    type: FETCH_SUCCESS,
-    payload
-  });
+  try {
+    const payload = await api.get(`/redis`);
+    dispatch({
+      type: FETCH_SUCCESS,
+      payload
+    });
+  } catch (error) {
+    dispatch({ type: FETCH_ERROR, payload: error });
+  }
 };
 
 export default (state = initialState, action) => {
